@@ -1,0 +1,43 @@
+.habit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+}
+
+.habit-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.habit-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.habit-left input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.habit-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.habit-points {
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.completed .habit-name {
+  text-decoration: line-through;
+  color: #888;
+}

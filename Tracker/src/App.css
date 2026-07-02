@@ -1,0 +1,39 @@
+.app-container {
+  max-width: 1400px;
+
+  margin: 40px auto;
+
+  display: grid;
+
+  grid-template-columns: 2fr 1fr;
+
+  gap: 30px;
+
+  padding: 20px;
+}
+
+.left-panel {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.right-panel {
+  position: sticky;
+
+  top: 20px;
+
+  height: fit-content;
+}
+
+@media (max-width: 900px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+
+  .right-panel {
+    position: static;
+  }
+}

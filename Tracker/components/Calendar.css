@@ -1,0 +1,36 @@
+.calendar-container {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+.react-calendar {
+  width: 100%;
+  border: none;
+}
+
+.react-calendar__tile {
+  border-radius: 8px;
+  transition: .2s;
+}
+
+.green-day {
+  background: #22c55e !important;
+  color: white !important;
+}
+
+.yellow-day {
+  background: #eab308 !important;
+  color: white !important;
+}
+
+.red-day {
+  background: #ef4444 !important;
+  color: white !important;
+}
+
+.react-calendar__tile--active {
+  background: #2563eb !important;
+  color: white !important;
+}
