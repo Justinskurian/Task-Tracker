@@ -1,41 +1,17 @@
-.calendar-container {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+.score-dot {
+    width: 35px;
+    height: 8px;
+    margin: 2px auto 0;
 }
 
-.react-calendar {
-  width: 100%;
-  border: none;
+.green-dot {
+    background: #22c55e;
 }
 
-.react-calendar__tile {
-  border-radius: 8px;
-  transition: 0.2s;
+.yellow-dot {
+    background: #eab308;
 }
 
-.green-day {
-  background: #22c55e !important;
-  color: white !important;
-}
-
-.yellow-day {
-  background: #eab308 !important;
-  color: white !important;
-}
-
-.red-day {
-  background: #ef4444 !important;
-  color: white !important;
-}
-
-.react-calendar__tile--active {
-  background: #2563eb !important;
-  color: white !important;
-}
-.score-label {
-  font-size: 10px;
-  font-weight: bold;
-  margin-top: 4px;
+.red-dot {
+    background: #ef4444;
 }

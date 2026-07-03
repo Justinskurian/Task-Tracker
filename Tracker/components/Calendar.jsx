@@ -2,41 +2,51 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./Calendar.css";
 
-function ActivityCalendar({ history = [] }) {
+function ActivityCalendar({ history }) {
   const scoreMap = {};
 
   history.forEach((day) => {
-    scoreMap[day.record_date] = day.total_score;
+    const key = day.record_date.split("T")[0];
+
+    scoreMap[key] = day.total_score;
   });
 
-  const tileClassName = ({ date, view }) => {
-    if (view !== "month") return "";
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
 
-    const dateString = date.toISOString().split("T")[0];
-    const score = scoreMap[dateString];
-
-    if (score == null) return "";
-    if (score >= 90) return "green-day";
-    if (score >= 60) return "yellow-day";
-
-    return "red-day";
+    return `${year}-${month}-${day}`;
   };
 
-  const tileContent = ({ date, view }) => {
-    if (view !== "month") return null;
+const tileContent = ({ date, view }) => {
+  if (view !== "month") return null;
 
-    const dateString = date.toISOString().split("T")[0];
-    const score = scoreMap[dateString];
+  const key = formatDate(date);
 
-    if (score == null) return null;
+  const score = scoreMap[key];
 
-    return <div className="score-label">{score}</div>;
-  };
+  if (score == null) return null;
+
+  let color = "";
+
+  if (score >= 90) color = "green-dot";
+  else if (score >= 60) color = "yellow-dot";
+  else color = "red-dot";
+
+  return (
+    <div
+      className={`score-dot ${color}`}
+      title={`Score: ${score}/100`}
+    ></div>
+  );
+};
 
   return (
     <div className="calendar-container">
-      <Calendar tileClassName={tileClassName} tileContent={tileContent} />{" "}
-    </div>
+<Calendar
+  tileContent={tileContent}
+/>    </div>
   );
 }
 
