@@ -15,12 +15,18 @@ function App() {
   });
 
   const [loading, setLoading] = useState(true);
+  const [history, setHistory] = useState([]);
 
   const fetchToday = async () => {
     try {
-      const { data } = await api.get("/records/today");
+      const [today, history] = await Promise.all([
+        api.get("/records/today"),
+        api.get("/records/history"),
+      ]);
 
-      setRecord(data);
+      setRecord(today.data);
+
+      setHistory(history.data);
     } catch (err) {
       console.error(err);
     } finally {
@@ -44,33 +50,19 @@ function App() {
     fetchToday();
   }, []);
 
-return (
-  <div className="app-container">
+  return (
+    <div className="app-container">
+      <div className="left-panel">
+        <Header date={record.date} score={record.score} />
 
-    <div className="left-panel">
+        <HabitList habits={record.habits} toggleHabit={toggleHabit} />
+      </div>
 
-      <Header
-        date={record.date}
-        score={record.score}
-      />
-
-      <HabitList
-        habits={record.habits}
-        toggleHabit={toggleHabit}
-      />
-
+      <div className="right-panel">
+        <ActivityCalendar history={history} />
+      </div>
     </div>
-
-    <div className="right-panel">
-
-      <ActivityCalendar
-        history={[]}
-      />
-
-    </div>
-
-  </div>
-);
+  );
 }
 
 export default App;

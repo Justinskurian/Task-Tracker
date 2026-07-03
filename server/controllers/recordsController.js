@@ -133,9 +133,7 @@ const getTodayRecord = async (req, res) => {
   }
 };
 
-/**
- * PUT /records/:recordId/habits/:habitId
- */
+/* PUT /records/:recordId/habits/:habitId*/
 const toggleHabit = async (req, res) => {
   try {
     const { recordId, habitId } = req.params;
@@ -190,8 +188,27 @@ const toggleHabit = async (req, res) => {
     });
   }
 };
+const getHistory = async (req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT
+        record_date,
+        total_score
+      FROM daily_records
+      ORDER BY record_date
+    `);
+
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).json({
+      message: "Database Error",
+    });
+  }
+};
 
 module.exports = {
   getTodayRecord,
-  toggleHabit,
+  toggleHabit,getHistory
 };

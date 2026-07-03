@@ -2,7 +2,7 @@
   background: white;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,.08);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .react-calendar {
@@ -12,7 +12,7 @@
 
 .react-calendar__tile {
   border-radius: 8px;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .green-day {
@@ -33,4 +33,9 @@
 .react-calendar__tile--active {
   background: #2563eb !important;
   color: white !important;
+}
+.score-label {
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 4px;
 }
